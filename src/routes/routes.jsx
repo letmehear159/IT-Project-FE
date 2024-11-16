@@ -7,9 +7,13 @@ import Homepage from "@/pages/HomePage.jsx";
 
 const router = createBrowserRouter([
     {
+
         path: path.HOME,
         element: <Homepage/>,
         errorElement: <div>404</div>,
+        children:[
+
+        ]
     },
 ]);
 
