@@ -1,1 +1,2 @@
-export const baseURL = 'localhost:3000/api/v1';
+export const baseURL = '/app';
+export const imageSrc='src/assets/'
