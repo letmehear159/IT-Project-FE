@@ -2,7 +2,8 @@ import React from 'react'
 // import Image from 'next/image'
 import {Image, Star} from 'lucide-react'
 import '../module_css/product.css'
-import ReactSVG  from '/src/assets/react.svg'
+import ReactSVG from '/src/assets/react.svg'
+
 export default function ProductCard() {
     return (
         <div className="container p-5">
@@ -43,7 +44,7 @@ export default function ProductCard() {
                                     d="M3 3.5H3.875C3.98333 3.5 4.073 3.4645 4.144 3.3935C4.21467 3.32283 4.25 3.23333 4.25 3.125C4.25 3.01667 4.21467 2.92717 4.144 2.8565C4.073 2.7855 3.98333 2.75 3.875 2.75H2.75C2.60833 2.75 2.4895 2.79783 2.3935 2.8935C2.29783 2.9895 2.25 3.10833 2.25 3.25V4.375C2.25 4.48333 2.2855 4.57283 2.3565 4.6435C2.42717 4.7145 2.51667 4.75 2.625 4.75C2.73333 4.75 2.82283 4.7145 2.8935 4.6435C2.9645 4.57283 3 4.48333 3 4.375V3.5ZM6.75 5.25H5.875C5.76667 5.25 5.67717 5.28533 5.6065 5.356C5.5355 5.427 5.5 5.51667 5.5 5.625C5.5 5.73333 5.5355 5.82283 5.6065 5.8935C5.67717 5.9645 5.76667 6 5.875 6H7C7.14167 6 7.26033 5.952 7.356 5.856C7.452 5.76033 7.5 5.64167 7.5 5.5V4.375C7.5 4.26667 7.46467 4.177 7.394 4.106C7.323 4.03533 7.23333 4 7.125 4C7.01667 4 6.927 4.03533 6.856 4.106C6.78533 4.177 6.75 4.26667 6.75 4.375V5.25ZM3.5 9.5C3.35833 9.5 3.23967 9.452 3.144 9.356C3.048 9.26033 3 9.14167 3 9V8.5H1C0.725 8.5 0.489667 8.40217 0.294 8.2065C0.098 8.0105 0 7.775 0 7.5V1.5C0 1.225 0.098 0.9895 0.294 0.7935C0.489667 0.597833 0.725 0.5 1 0.5H9C9.275 0.5 9.5105 0.597833 9.7065 0.7935C9.90217 0.9895 10 1.225 10 1.5V7.5C10 7.775 9.90217 8.0105 9.7065 8.2065C9.5105 8.40217 9.275 8.5 9 8.5H7V9C7 9.14167 6.95217 9.26033 6.8565 9.356C6.7605 9.452 6.64167 9.5 6.5 9.5H3.5ZM1.5 7H8.5V2H1.5V7Z"
                                     fill="#6D6E72"/>
                             </svg>
-                            <span>15.6 FHD</span>
+                            <span className="ml-0.5">15.6 FHD</span>
                         </div>
                         <div className=" pro-technical-line">
                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
@@ -76,7 +77,7 @@ export default function ProductCard() {
                                     d="M3.26843 9.55477V8.125H4.47927V9.55477C4.47927 9.79934 4.20831 10 3.87809 10C3.53939 10 3.26843 9.79934 3.26843 9.55477Z"
                                     fill="#6D6E72"/>
                             </svg>
-                            <span>Ultra 7 155H</span>
+                            <span className="ml-0.5">Ultra 7 155H</span>
                         </div>
                         <div className="pro-technical-line">
                             <svg width="10" height="8" viewBox="0 0 10 8" fill="none"
@@ -88,7 +89,7 @@ export default function ProductCard() {
                                     d="M6.875 3.00181H7.30868C7.41352 2.99361 7.51853 3.01336 7.61727 3.05982C7.71601 3.10628 7.80639 3.17848 7.88285 3.27197C7.95931 3.36546 8.02023 3.47828 8.06187 3.60348C8.10352 3.72868 8.125 3.86362 8.125 4C8.125 4.13638 8.10352 4.27132 8.06187 4.39652C8.02023 4.52172 7.95931 4.63454 7.88285 4.72803C7.80639 4.82153 7.71601 4.89372 7.61727 4.94018C7.51853 4.98664 7.41352 5.00639 7.30868 4.99819H6.875V3.00181Z"
                                     fill="#6D6E72"/>
                             </svg>
-                            <span>1 TB</span>
+                            <span className="ml-0.5">1 TB</span>
                         </div>
                         <div className="pro-technical-line">
                             <svg width="10" height="8" viewBox="0 0 10 8" fill="none"
@@ -116,7 +117,7 @@ export default function ProductCard() {
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <span>32 GB</span>
+                            <span className="ml-0.5">32 GB</span>
                         </div>
                         <div className=" pro-technical-line">
                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
@@ -140,7 +141,7 @@ export default function ProductCard() {
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <span>120 Hz</span>
+                            <span className="ml-0.5">120 Hz</span>
                         </div>
                         <div className="  pro-technical-line">
                             <svg width="10" height="8" viewBox="0 0 10 10" fill="none"
@@ -152,20 +153,25 @@ export default function ProductCard() {
                             <span>RTX 4050</span>
                         </div>
                     </div>
+                    <div className=" line-through text-left text-gray-500 text-sm">10.490.000đ</div>
                     <div className="mb-2">
                         <div className="flex items-center gap-2">
-                            <span className="text-lg font-bold text-red-600">9.990.000₫</span>
+                            <span className="text-xl font-bold text-red-600">9.990.000₫</span>
                             <span
                                 className="pro-label-on-sale">-5%</span>
                         </div>
                     </div>
                     <div className="flex items-center">
-                        <span className="mr-1 font-bold">0.0</span>
-                        <Star className="h-4 w-4 text-yellow-400"/>
+                        <span className="mr-1 text-sm text-amber-500">0.0</span>
+                        <svg viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-3">
+                            <path
+                                d="M2.09627 11.6195L2.82735 8.16864L0.268563 5.80414C0.268563 5.80414 -0.096986 5.48462 0.0248693 5.03728C0.146725 4.58994 0.634105 4.58994 0.634105 4.58994L4.04582 4.27041L5.38614 1.01124C5.38614 1.01124 5.5689 0.5 5.99538 0.5C6.42185 0.5 6.60461 1.01124 6.60461 1.01124L7.94493 4.27041L11.4785 4.58994C11.4785 4.58994 11.844 4.65385 11.9659 5.03728C12.0877 5.42071 11.844 5.67633 11.844 5.67633L9.1634 8.16864L9.89448 11.7473C9.89448 11.7473 10.0163 12.1308 9.71171 12.3864C9.40709 12.642 8.91971 12.3864 8.91971 12.3864L5.99538 10.5331L3.13197 12.3864C3.13197 12.3864 2.70551 12.642 2.33996 12.3864C1.97442 12.1308 2.09627 11.6195 2.09627 11.6195Z"
+                                fill="#FF8A00"></path>
+                        </svg>
                         <span className="ml-1 text-sm text-gray-500">(0 đánh giá)</span>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
