@@ -6,6 +6,7 @@ import CardProduct from '@/modules/Product/CardProduct.jsx'
 import GearNavigation from "@/modules/Navigation/GearNavigation.jsx";
 import HomeNavigation from "@/modules/Navigation/HomeNavigation.jsx";
 import LayoutHeader from "@/modules/Layout/LayoutHeader.jsx";
+import ProductCarousel from "@/modules/HomePage/ProductCarousel.jsx";
 
 const largeData = {
     fieldA: {
@@ -29,6 +30,7 @@ const Homepage = () => {
         <AnotherModule/>
         <CardProduct/>
         <HomeNavigation/>
+        <ProductCarousel/>
 
         {/*{data.map((item) => <p>{item.name}</p>)}*/}
     </div>
