@@ -17,7 +17,7 @@ export default {
                 'small-navi': '1.9rem'
             },
             colors: {
-                background: 'hsl(var(--background))',
+                background: 'hsl(var(--secondary))',
                 foreground: 'hsl(var(--foreground))',
                 card: {
                     DEFAULT: 'hsl(var(--card))',
