@@ -69,7 +69,7 @@ export default function LayoutHeader() {
                 </div>
             </a>
             <a className={'flex items-center ml-2'} href={"#"}>
-                <img src={`${imageSrc}order.png`} className={'w-8 h-8 '}/>
+                <img src={`${imageSrc}order.png`} className={'w-7 h-7 '}/>
                 <div className={'text-white font-bold scale-75 '} style={{fontSize: '12px'}}>
                     <div className={'text-start max-w-14'}>Tra cứu đơn hàng
                     </div>
@@ -77,7 +77,7 @@ export default function LayoutHeader() {
             </a>
 
             <a className={'flex items-center ml-2'} href={"#"}>
-                <img src={`${imageSrc}shopping-cart.png`} className={'w-8 h-8 '}/>
+                <img src={`${imageSrc}shopping-cart.png`} className={'w-6 h-6 '}/>
                 <div className={'text-white font-bold scale-75 '} style={{fontSize: '12px'}}>
                     <div className={'text-start max-w-14'}> Giỏ hàng
                     </div>
