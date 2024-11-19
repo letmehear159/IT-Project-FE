@@ -6,7 +6,7 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel.jsx"
 import {Card, CardContent} from "@/components/ui/card.jsx";
-import ProductCard from "@/modules/Product/CardProduct.jsx";
+import ProductCard from "@/modules/HomePage/CardProduct.jsx";
 import '/src/modules/module_css/productCarousel.css'
 
 export default function ProductCarousel() {
