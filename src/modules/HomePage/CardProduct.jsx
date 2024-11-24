@@ -3,7 +3,7 @@ import React from 'react'
 import {Image, Star} from 'lucide-react'
 import '../module_css/product.css'
 import ReactSVG from '/src/assets/react.svg'
-
+import {imageSrc} from "@/constants/index.ts";
 export default function ProductCard() {
     return (
         <div className="container">
@@ -29,7 +29,7 @@ export default function ProductCard() {
                         </svg>
                     </button>
                 </div>
-                <img src="src/assets/1_251_1.webp" className=""/>
+                <img src={`${imageSrc}1_251_1.webp`} className=""/>
                 <div className="p-4">
                     <h3 className="product-name ">
                         <a href="#" className="text-gray-900 hover:text-blue-600">
