@@ -1,0 +1,13 @@
+.laptop a {
+    color: black;
+    padding-top: 10px;
+    font-size: 14px;
+
+}
+.laptop li{
+    padding-top: 8px;
+    width: 164px;
+}
+.laptop a:hover{
+    color:rgb(200,38,38);
+}
