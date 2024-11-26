@@ -1,14 +1,16 @@
+import {Form} from "react-router-dom";
+
 export default function UserInformation() {
     return (
         <div className={'p-4 font-medium'}>
             <div className={'text-left font-bold text-gray-600 text-2xl'}>Thông tin tài khoản</div>
-            <form className={'mt-8'}>
+            <Form className={'mt-8'} method={'post'}>
                 <div className={'grid grid-cols-12 items-center'}>
                     <label className={'col-span-2 text-right px-8'}>Họ tên</label>
                     <input className={'col-span-5 bg-white border-2 rounded h-10 px-4'} name={'fullName'}
                            value={'Nguyen Truong'}></input>
                 </div>
-                <div className={'grid grid-cols-12 mt-5'}>
+                <div className={'grid grid-cols-12 mt-3'}>
                     <label className={'col-span-2 text-right px-8'}>Giới tính</label>
                     <div className={'col-span-5 flex items-center'}>
                         <input type="radio" className="h-4 w-4 form-radio" name={'gender'} value={'Male'}/>
@@ -17,19 +19,19 @@ export default function UserInformation() {
                         <div className={'ml-2'}>Nữ</div>
                     </div>
                 </div>
-                <div className={'grid grid-cols-12 mt-5 items-center'}>
+                <div className={'grid grid-cols-12 mt-3 items-center'}>
                     <label className={'col-span-2 text-right pr-8'}>Số điện thoại</label>
                     <input className={'col-span-5 bg-white border-2 rounded h-10 px-4'} name={'phoneNumber'}
                            value={'Nguyen Truong'}></input>
                 </div>
 
-                <div className={'grid grid-cols-12 mt-5 items-center'}>
+                <div className={'grid grid-cols-12 mt-3 items-center'}>
                     <label className={'col-span-2 text-right pr-8'}>Email</label>
                     <input className={'col-span-5 bg-white border-2 rounded h-10 px-4'} name={'email'}
                            value={'Nguyen Truong'}></input>
                 </div>
 
-                <div className={'grid grid-cols-12 mt-5 items-center '}>
+                <div className={'grid grid-cols-12 mt-3 items-center '}>
                     <label className={'col-span-2 text-right pr-8'}>Ngày sinh</label>
                     <div className={'col-span-5 justify-between flex'}>
                         <select className={'bg-white border-2 rounded px-3'} name={'date'}
@@ -63,7 +65,12 @@ export default function UserInformation() {
 
                 </div>
 
-            </form>
+                <div className={'grid grid-cols-12 mt-3 items-center'}>
+                    <div className={'col-span-2'}></div>
+                    <button type={'submit'} className={'bg-red-600 text-white col-span-2'}>LƯU THAY ĐỔI</button>
+                </div>
+
+            </Form>
         </div>
     );
 };

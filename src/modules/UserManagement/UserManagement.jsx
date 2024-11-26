@@ -1,6 +1,8 @@
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
 import {imageSrc} from "@/constants/index.ts";
 import UserInformation from "@/modules/UserManagement/UserInformation.jsx";
+import ShippingAddress from "@/modules/UserManagement/ShippingAddress.jsx";
+import ProductManagement from "@/modules/UserManagement/ProductManagement.jsx";
 
 export default function UserManagement() {
     return (
@@ -47,8 +49,8 @@ export default function UserManagement() {
             </div>
             <div className={'col-span-9 row-span-12 rounded bg-white'}>
                 <TabsContent value="account"><UserInformation/></TabsContent>
-                <TabsContent value="shippingAddress">Change your password here.</TabsContent>
-                <TabsContent value="productManagement">Make changes to your account here.</TabsContent>
+                <TabsContent value="shippingAddress"><ShippingAddress/></TabsContent>
+                <TabsContent value="productManagement"><ProductManagement/></TabsContent>
                 <TabsContent value="logout">Change your password here.</TabsContent>
             </div>
 
