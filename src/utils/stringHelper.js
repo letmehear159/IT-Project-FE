@@ -7,7 +7,7 @@ const stringHelper = {
     },
     checkExistedSpecifications(product, key) {
 
-        const checkExisted=  product.specifications.some(spec => spec.specKey === key);
+        const checkExisted = product.specifications.some(spec => spec.specKey === key);
 
         if (!checkExisted) {
             return false;
@@ -18,16 +18,27 @@ const stringHelper = {
             return false;
         }
         return true;
-
-
     },
-    getBriefSpecValue(product,key){
+    getBriefSpecValue(product, key) {
         const spec = product.specifications.find(spec => spec.specKey === key);
         return spec.briefSpecValue;
     },
     formatPrice(price) {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " ₫";
     },
+    filterSpecificationsWithBrief(specs) {
+        return specs.filter(spec => spec.briefSpecValue);
+    },
+    similarProductByCategory(productList, product) {
+        const products = productList.filter(pro => pro.productName !== product.productName);
+
+        if (products.length >= 5) {
+            return products.slice(0, 5);
+        }
+        return products.slice(0, products.length);
+    },
+
+
 
 };
 

@@ -3,14 +3,32 @@ import {imageSrc} from "@/constants/index.ts";
 import UserInformation from "@/modules/UserManagement/UserInformation.jsx";
 import ShippingAddress from "@/modules/UserManagement/ShippingAddress.jsx";
 import ProductManagement from "@/modules/UserManagement/ProductManagement.jsx";
+import {useState} from "react";
+import {userApis} from "@/apis/userApis.js";
 
 export default function UserManagement() {
+
+    const [username, setUsername] = useState(null);
+    const [fullName, setFullname] = useState(null);
+    const [phoneNumber, setPhoneNumber] = useState(null);
+    const [email, setEmail] = useState(null);
+
+
+
+    if (localStorage.getItem('username') !== null && username === null) {
+        setUsername(localStorage.getItem('username'))
+        const user = userApis.getUserByUsername(username);
+        setFullname(user.fullName);
+        setPhoneNumber(user.phoneNumber);
+        setEmail(user.email);
+    }
+
     return (
         <Tabs className={'grid grid-cols-12 grid-rows-12 p-0'} style={{height: '400px'}}>
             <div className={'col-span-3 row-span-12 mr-5 rounded bg-white  grid grid-row-12 '}>
                 <div className={'row-span-2 flex items-center border-b-2 px-5'}>
                     <img src={`${imageSrc}profile.png`} className={'w-12 h-12 '}/>
-                    <span className={'font-bold text-xl text-center ml-5'}>Nguyen Truong</span>
+                    <span className={'font-bold text-xl text-center ml-5'}>{username}</span>
                 </div>
                 <div className={' row-span-11 mt-4'}>
                     <TabsList className={'flex-col  bg-white'} style={{width: '100%'}}>
@@ -56,5 +74,6 @@ export default function UserManagement() {
 
         </Tabs>
 
-    )
+
+    );
 };

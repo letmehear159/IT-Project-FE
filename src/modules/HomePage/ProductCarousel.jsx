@@ -8,16 +8,21 @@ import {
 import {Card, CardContent} from "@/components/ui/card.jsx";
 import ProductCard from "@/modules/HomePage/CardProduct.jsx";
 import '/src/modules/module_css/productCarousel.css'
+import Autoplay from "embla-carousel-autoplay";
 
-export default function ProductCarousel() {
+export default function ProductCarousel({products}) {
 
     return (
-        <Carousel>
+        <Carousel plugins={[
+            Autoplay({
+                delay: 3500,
+            })
+        ]}>
             <CarouselContent>
                 {
-                    Array.from({length: 20}).map(() => (
+                    products.map((product) => (
                         <CarouselItem className="md:basis-1/4 lg:basis-1/5 pl-4">
-                            <ProductCard/>
+                            <ProductCard product={product}/>
                         </CarouselItem>
                     ))
                 }

@@ -7,66 +7,43 @@ import {
 } from "@/components/ui/carousel.jsx"
 import '/src/modules/module_css/product.css'
 import ProductCard from "@/modules/HomePage/CardProduct.jsx";
-import {imageSrc} from "@/constants/index.ts";
+import {backEndImageSrc, imageSrc} from "@/constants/index.ts";
 import React, {useState} from "react";
+import stringHelper from "@/utils/stringHelper.js";
 
-const images = [
-    {
-        src: 'keyboard-first.webp'
-    },
-    {
-        src: 'keyboard-second.webp'
-    },
-    {
-        src: 'keyboard-third.webp'
-    },
-    {
-        src: 'keyboard-fourth.webp'
-    }, {
-        src: 'keyboard-fifth.webp'
-    },
-    {
-        src: 'keyboard-sixth.webp'
-    }
-]
-
-
-export default function MainProduct() {
-
-
+export default function MainProduct({product}) {
     return (
         <div className={'bg-white grid grid-cols-12 flex '}>
             <div className={'col-span-5 border-r-2'}>
-                <div className={'  p-4 mt-14 '}>
+                <div className={'p-4 mt-14 '}>
                     <div>
                         <Carousel>
                             <CarouselContent>
                                 {
-                                    images.map((image, index) => (
+                                    product.productImages.map((productImage) => (
                                         <CarouselItem
-                                            key={index}
-
+                                            key={productImage.productImageId}
                                         >
-                                            <img src={`${imageSrc + image.src}`}
+                                            <img src={`${backEndImageSrc + productImage.imageUrl}`}
                                                  className={'cursor-pointer rounded-xl'}/>
                                         </CarouselItem>
                                     ))
                                 }
+
                             </CarouselContent>
                             <CarouselPrevious className={'left-1'}/>
                             <CarouselNext className={'right-1 '}/>
                         </Carousel>
                     </div>
-
-                    <div>
+                    <div className={'mt-5'}>
                         <Carousel>
                             <CarouselContent>
                                 {
-                                    images.map((image, index) => (
+                                    product.productImages.map((productImage) => (
                                         <CarouselItem className="md:basis-1/4 lg:basis-1/5"
-                                                      key={index}
+                                                      key={productImage.productImageId}
                                         >
-                                            <img src={`${imageSrc + image.src}`}
+                                            <img src={`${backEndImageSrc + productImage.imageUrl}`}
                                                  className={'cursor-pointer '}
                                             />
                                         </CarouselItem>
@@ -82,7 +59,7 @@ export default function MainProduct() {
             </div>
 
             <div className={'col-span-7  p-5'}>
-                <div className={'text-start font-bold text-2xl'}>Bàn phím Durgod MK 75 Black Brown Switch</div>
+                <div className={'text-start font-bold text-2xl'}>{product.productName}</div>
                 <div className={'flex mt-4'}>
                     <span className={'text-start font-bold text-amber-500 mr-1 '} style={{fontSize: '20px'}}> 0.0</span>
                     <svg viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg" className={'w-4'}>
@@ -95,12 +72,15 @@ export default function MainProduct() {
                 <div className={'flex items-end mt-4 '}>
 
                     <div className="flex items-center gap-2">
-                        <span className="text-3xl font-bold text-red-600">9.990.000₫</span>
+                        <span
+                            className="text-3xl font-bold text-red-600">{stringHelper.formatPrice(product.price)}</span>
                     </div>
-                <div className=" line-through text-left text-gray-500 text-xl ml-3">10.490.000đ</div>
-                <span
-                    className="pro-label-on-sale w-12 h-8 flex items-center justify-center " style={{borderRadius:'5px'}} >
-                    <span >-5%</span>
+                    <div
+                        className=" line-through text-left text-gray-500 text-xl ml-3">{stringHelper.formatPrice(product.price)}</div>
+                    <span
+                        className="pro-label-on-sale w-12 h-8 flex items-center justify-center "
+                        style={{borderRadius: '5px'}}>
+                    <span>-0%</span>
                     </span>
                 </div>
                 <div className={'flex '}>
@@ -110,6 +90,18 @@ export default function MainProduct() {
                     </button>
                 </div>
 
+                <div className={'flex mt-3'}>
+                    <img src={`${imageSrc}tick.png`} className={'w-5 h-5 mr-2'}/>
+                    <span className={'font-medium'}>Bảo hành chính hãng 12 tháng.</span>
+                </div>
+                <div className={'flex mt-3'}>
+                    <img src={`${imageSrc}tick.png`} className={'w-5 h-5 mr-2'}/>
+                    <span className={'font-medium'}>Hỗ trợ đổi mới trong 7 ngày.</span>
+                </div>
+                <div className={'flex mt-3'}>
+                    <img src={`${imageSrc}tick.png`} className={'w-5 h-5 mr-2'}/>
+                    <span className={'font-medium'}>Miễn phí giao hàng toàn quốc.</span>
+                </div>
 
             </div>
         </div>
