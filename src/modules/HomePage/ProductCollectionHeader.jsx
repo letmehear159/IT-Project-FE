@@ -1,10 +1,9 @@
-export default function ProductCollectionHeader() {
+export default function ProductCollectionHeader({category}) {
     return (
         <div>
             <div className="flex grid grid-cols-12 mt-2 mb-5 px-3">
                 <div className="flex col-span-5 gap-4 items-end"><a
-                    className="text-black text-2xl font-bold hover:text-red-600 col-span-3 text-left" href="#"> Laptop
-                    gaming </a>
+                    className="text-black text-2xl font-bold hover:text-red-600 col-span-3 text-left" href="#"> {category} </a>
                     <div className="flex col-span-3  ml-5">
                         <svg viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6">
                             <path

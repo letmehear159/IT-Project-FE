@@ -20,6 +20,7 @@ export default function LayoutHeader() {
     const [loginUsername, setLoginUsername] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [username, setUsername] = useState(null);
+    const [user, setUser] = useState(null);
     const handleFocus = () => {
         setIsFocused(true);
     };
@@ -37,6 +38,10 @@ export default function LayoutHeader() {
 
     const login = async () => {
         const resultLogin = await userApis.login(loginUsername, loginPassword);
+        if (resultLogin === true) {
+            const userLogged = await userApis.getUserByUsername(loginUsername);
+            setUser(userLogged);
+        }
     };
 
     useEffect(() => {
@@ -96,8 +101,9 @@ export default function LayoutHeader() {
                 <a className={'flex items-center ml-2'} href={"#"}>
                     <img src={`${imageSrc}shopping-cart.png`} className={'w-6 h-6 '}/>
                     <div className={'text-white font-bold scale-75 '} style={{fontSize: '12px'}}>
-                        <div className={'text-start max-w-14'}> Giỏ hàng
-                        </div>
+                        <a className={'text-start max-w-14 text-white'}
+                           href={username === null ? '' : `cart/2`}> Giỏ hàng
+                        </a>
                     </div>
                 </a>
                 <Popover>

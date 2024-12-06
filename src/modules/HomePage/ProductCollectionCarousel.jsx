@@ -20,7 +20,7 @@ export default function ProductCollectionCarousel({categoryType}) {
 
     return (
         <div className={'container p-3 rounded-xl bg-white'}>
-            <ProductCollectionHeader/>
+            <ProductCollectionHeader category={categoryType}/>
             <ProductCarousel products={products}/>
         </div>
     );

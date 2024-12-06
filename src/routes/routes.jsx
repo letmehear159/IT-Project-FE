@@ -8,6 +8,8 @@ import Homepage from "@/pages/HomePage.jsx";
 import CompleteProduct from "@/modules/Product/CompleteProduct.jsx";
 import LayoutHeader from "@/modules/Layout/LayoutHeader.jsx";
 import UserManagement from "@/modules/UserManagement/UserManagement.jsx";
+import Cart from "@/pages/Cart.jsx";
+import {orderDetailApis} from "@/apis/orderDetailApis.js";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +18,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: path.HOME,
-                element:<Homepage/>
+                element: <Homepage/>
             },
             {
                 path: '/products/:productId',
@@ -28,7 +30,13 @@ const router = createBrowserRouter([
             ,
             {
                 path: '/account',
-                element:<UserManagement/>
+                element: <UserManagement/>
+            }, {
+                path: '/cart/:cartId',
+                loader: async ({params})=>{
+                    return orderDetailApis.getAllOrderDetailsByCart(params.cartId);
+                },
+                element:<Cart/>
             }
         ]
     },
