@@ -10,6 +10,7 @@ import LayoutHeader from "@/modules/Layout/LayoutHeader.jsx";
 import UserManagement from "@/modules/UserManagement/UserManagement.jsx";
 import Cart from "@/pages/Cart.jsx";
 import {orderDetailApis} from "@/apis/orderDetailApis.js";
+import {userApis} from "@/apis/userApis.js";
 
 const router = createBrowserRouter([
     {
@@ -29,10 +30,13 @@ const router = createBrowserRouter([
             }
             ,
             {
-                path: '/account',
+                path: '/account/:username',
+                loader:async ({params})=>{
+                    return userApis.getUserByUsername(params.username);
+                },
                 element: <UserManagement/>
             }, {
-                path: '/cart/:cartId',
+                path: '/shopping-cart/:cartId',
                 loader: async ({params})=>{
                     return orderDetailApis.getAllOrderDetailsByCart(params.cartId);
                 },
