@@ -37,7 +37,12 @@ const stringHelper = {
         }
         return products.slice(0, products.length);
     },
+    getTotalPriceFromCart(productList) {
+        let total = 0;
 
+        productList.map((pro) => total += pro.price)
+        return this.formatPrice(total);
+    },
 
 
 };
