@@ -15,7 +15,6 @@ import UserManagement from "@/modules/UserManagement/UserManagement.jsx";
 import Test from "@/modules/TestUI/Test.jsx";
 
 
-
 const Homepage = () => {
     //
     // const [resData, setResData] = useState();
@@ -25,20 +24,14 @@ const Homepage = () => {
     //     setResData(data);
     // }, [])
     return (
-        <div >
-            {/*<Description/>*/}
-            {/*<AnotherModule/>*/}
-            {/*<CardProduct/>*/}
+        <div>
             <HomeNavigation/>
-            {/*<ProductCarousel/>*/}
-            {/*<ProductCollectionCarousel/>*/}
-            {/*<Catalog/>*/}
-            {/*<ProductContent/>*/}
-            {/*<UserManagement/>*/}
             <ProductCollectionCarousel categoryType={'Laptop Gaming'}/>
             <ProductCollectionCarousel categoryType={'Laptop'}/>
             <ProductCollectionCarousel categoryType={'Monitor'}/>
             <ProductCollectionCarousel categoryType={'Keyboard'}/>
+            <Catalog/>
+
         </div>
     )
 }
