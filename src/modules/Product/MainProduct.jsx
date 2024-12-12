@@ -10,8 +10,18 @@ import ProductCard from "@/modules/HomePage/CardProduct.jsx";
 import {backEndImageSrc, imageSrc} from "@/constants/index.ts";
 import React, {useState} from "react";
 import stringHelper from "@/utils/stringHelper.js";
+import {orderDetailApis} from "@/apis/orderDetailApis.js";
 
 export default function MainProduct({product}) {
+
+    const userCartId = localStorage.getItem('cartId');
+
+    const addToCart = () => {
+        if (orderDetailApis.createOrderDetail(userCartId, product.productId, product.price)) {
+            console.log("add success");
+        }
+    }
+
     return (
         <div className={'bg-white grid grid-cols-12 flex '}>
             <div className={'col-span-5 border-r-2'}>
@@ -84,7 +94,8 @@ export default function MainProduct({product}) {
                     </span>
                 </div>
                 <div className={'flex '}>
-                    <button className={' flex-col bg-red-600 text-white mt-5 '} style={{width: '400px'}}>
+                    <button className={' flex-col bg-red-600 text-white mt-5 '} style={{width: '400px'}}
+                            onClick={() => addToCart()}>
                         <div className={'text-2xl'}>Mua ngay</div>
                         <div>Giao tận nơi hoặc nhận tại cửa hàng</div>
                     </button>
