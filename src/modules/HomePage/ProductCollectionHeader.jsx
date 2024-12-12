@@ -13,16 +13,8 @@ export default function ProductCollectionHeader({category}) {
                         <p className="font-bold  ml-3"> Miễn phí giao hàng </p>
                     </div>
                 </div>
-                <div className={'col-span-7  flex items-end justify-around'}>
-                    <div>
-                        <a href={'#'} className={'text-xl text-black hover:text-red-600 mx-4'}> PC I3</a>
-                        <a href={'#'} className={'text-xl text-black hover:text-red-600 mx-4'}> PC I3</a>
-                        <a href={'#'} className={'text-xl text-black hover:text-red-600 mx-4'}> PC I3</a>
-                        <a href={'#'} className={'text-xl text-black hover:text-red-600 mx-4'}> PC I3</a>
-                        <a href={'#'} className={'text-xl text-black hover:text-red-600 mx-4'}> PC I3</a>
-                        <a href={'#'} className={'text-xl text-black hover:text-red-600 mx-4'}> PC I3</a>
+                <div className={'col-span-7  flex items-end justify-end'}>
 
-                    </div>
                     <a href={'#'} className={'text-xl hover:text-red-600'}> Xem tất cả</a>
                 </div>
 
