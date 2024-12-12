@@ -1,6 +1,6 @@
 import {Form} from "react-router-dom";
 
-export default function UserInformation() {
+export default function UserInformation({user}) {
     return (
         <div className={'p-4 font-medium'}>
             <div className={'text-left font-bold text-gray-600 text-2xl'}>Thông tin tài khoản</div>
@@ -8,7 +8,7 @@ export default function UserInformation() {
                 <div className={'grid grid-cols-12 items-center'}>
                     <label className={'col-span-2 text-right px-8'}>Họ tên</label>
                     <input className={'col-span-5 bg-white border-2 rounded h-10 px-4'} name={'fullName'}
-                           value={'Nguyen Truong'}></input>
+                           value={user.fullName}></input>
                 </div>
                 <div className={'grid grid-cols-12 mt-3'}>
                     <label className={'col-span-2 text-right px-8'}>Giới tính</label>
@@ -22,13 +22,13 @@ export default function UserInformation() {
                 <div className={'grid grid-cols-12 mt-3 items-center'}>
                     <label className={'col-span-2 text-right pr-8'}>Số điện thoại</label>
                     <input className={'col-span-5 bg-white border-2 rounded h-10 px-4'} name={'phoneNumber'}
-                           value={'Nguyen Truong'}></input>
+                           value={user.phone}></input>
                 </div>
 
                 <div className={'grid grid-cols-12 mt-3 items-center'}>
                     <label className={'col-span-2 text-right pr-8'}>Email</label>
                     <input className={'col-span-5 bg-white border-2 rounded h-10 px-4'} name={'email'}
-                           value={'Nguyen Truong'}></input>
+                           value={user.email}></input>
                 </div>
 
                 <div className={'grid grid-cols-12 mt-3 items-center '}>
