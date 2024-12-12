@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/popover"
 import {Outlet} from "react-router-dom";
 import {userApis} from "@/apis/userApis.js";
+import Footer from "@/modules/Layout/Footer.jsx";
 
 export default function LayoutHeader() {
 
@@ -21,6 +22,11 @@ export default function LayoutHeader() {
     const [loginPassword, setLoginPassword] = useState('');
     const [username, setUsername] = useState(null);
     const [user, setUser] = useState(null);
+    const [cartId, setCartId] = useState(localStorage.getItem('cartId'));
+    const [createUsername, setCreateUserName] = useState('');
+    const [createPassword, setCreatePassword] = useState('');
+    const [email, setEmail] = useState('');
+
     const handleFocus = () => {
         setIsFocused(true);
     };
@@ -41,8 +47,28 @@ export default function LayoutHeader() {
         if (resultLogin === true) {
             const userLogged = await userApis.getUserByUsername(loginUsername);
             setUser(userLogged);
+            setCartId(userLogged.shoppingCart.cartId);
+            localStorage.setItem('cartId', userLogged.shoppingCart.cartId);
         }
     };
+
+    const signUp = async () => {
+        const newUser = await userApis.createUser(createUsername, email, createPassword);
+        if (newUser !== null) {
+            setUser(newUser);
+            setCartId(newUser.shoppingCart.cartId);
+            setUsername(newUser.username);
+            localStorage.setItem('cartId', newUser.shoppingCart.cartId);
+            localStorage.setItem('username', newUser.username);
+        }
+    }
+
+    const logout = () => {
+        setUser(null);
+        setUsername(null);
+        setCartId(null);
+        localStorage.clear();
+    }
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
@@ -54,10 +80,13 @@ export default function LayoutHeader() {
     return (
         <div>
             <div className={`flex mb-4 py-5 rounded `} style={{backgroundColor: '#FF0000'}}>
-                <img src={`${imageSrc}microprocessor (1).png`} className={'w-10 h-10'}/>
-                <div className="flex items-center ">
-                    <div className="text-white font-bold ml-1">COMPONENTS</div>
-                </div>
+                <a className={'flex'} href={'/'}>
+                    <img src={`${imageSrc}microprocessor (1).png`} className={'w-10 h-10'}/>
+                    <div className="flex items-center ">
+                        <div className="text-white font-bold ml-1">COREPONENTS</div>
+                    </div>
+                </a>
+
                 <div className={'flex items-center rounded bg-gray-500 cursor-pointer ml-3 px-2 py-0.5'}
                      style={{
                          backgroundColor: '#BE1529',
@@ -93,8 +122,8 @@ export default function LayoutHeader() {
                 <a className={'flex items-center ml-2'} href={"#"}>
                     <img src={`${imageSrc}order.png`} className={'w-7 h-7 '}/>
                     <div className={'text-white font-bold scale-75 '} style={{fontSize: '12px'}}>
-                        <div className={'text-start max-w-14'}>Tra cứu đơn hàng
-                        </div>
+                        <a className={'text-start max-w-14'} href={`account/${username}`}>Tra cứu đơn hàng
+                        </a>
                     </div>
                 </a>
 
@@ -102,7 +131,7 @@ export default function LayoutHeader() {
                     <img src={`${imageSrc}shopping-cart.png`} className={'w-6 h-6 '}/>
                     <div className={'text-white font-bold scale-75 '} style={{fontSize: '12px'}}>
                         <a className={'text-start max-w-14 text-white'}
-                           href={username === null ? '' : `cart/2`}> Giỏ hàng
+                           href={cartId === null ? '' : `/shopping-cart/${localStorage.getItem('cartId')}`}> Giỏ hàng
                         </a>
                     </div>
                 </a>
@@ -189,20 +218,29 @@ export default function LayoutHeader() {
                                                 <div className={'px-6 bg-white'} style={{width: '500px'}}>
                                                     <div className={'text-gray-700 font-bold pb-3 border-b-2'}>ĐĂNG KÝ
                                                     </div>
-                                                    <form className={'mt-3 grid grid-cols-12'}>
+                                                    <form className={'mt-3 grid grid-cols-12'} onSubmit={(e) => {
+                                                        e.preventDefault();
+                                                        signUp();
+                                                    }}>
                                                         <input type={'text'}
                                                                className={'col-span-12 bg-white border-2 rounded h-10 px-4'}
                                                                name={'username'}
+                                                               value={createUsername}
+                                                               onChange={e => setCreateUserName(e.target.value)}
                                                                style={{border: '1px solid gray'}}
                                                                placeholder={'Username'}></input>
                                                         <input type={'text'}
                                                                className={'col-span-12 mt-6 bg-white border-2 rounded h-10 px-4'}
                                                                name={'email'}
+                                                               value={createPassword}
+                                                               onChange={e => setCreatePassword(e.target.value)}
                                                                style={{border: '1px solid gray'}}
                                                                placeholder={'Email'}></input>
                                                         <input type={'password'}
                                                                className={'col-span-12 mt-6 bg-white border-2 rounded h-10 px-4'}
                                                                name={'password'}
+                                                               value={email}
+                                                               onChange={e => setEmail(e.target.value)}
                                                                style={{border: '1px solid gray'}}
                                                                placeholder={'Mật khẩu'}></input>
                                                         <button
@@ -224,13 +262,14 @@ export default function LayoutHeader() {
                                     </div>
                                     <div className={'flex items-center mt-3'}>
                                         <img src={`${imageSrc}/to-do-list.png`} className={'w-4 h-4 mr-3'}/>
-                                        <a className={'text-black hover:text-red-600'} href={'#'}>
+                                        <a className={'text-black hover:text-red-600'} href={`account/${username}`}>
                                             Đơn hàng của tôi
                                         </a>
                                     </div>
                                     <div className={'flex items-center mt-3'}>
                                         <img src={`${imageSrc}/logout.png`} className={'w-4 h-4 mr-3'}/>
-                                        <a className={'text-black hover:text-red-600'} href={'#'}>
+                                        <a className={'text-black hover:text-red-600 hover:cursor-pointer'}
+                                           onClick={() => logout()}>
                                             Đăng xuất
                                         </a>
                                     </div>
@@ -243,6 +282,7 @@ export default function LayoutHeader() {
                 </Popover>
             </div>
             <Outlet/>
+            <Footer/>
         </div>
 
     );
