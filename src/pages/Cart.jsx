@@ -6,6 +6,6 @@ export default function Cart() {
     const orderDetails = useLoaderData();
 
     return (
-        <CartMenu orderDetails={orderDetails}/>
+        <CartMenu initialOrderDetails={orderDetails}/>
     );
 };
