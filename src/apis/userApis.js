@@ -37,4 +37,59 @@ export const userApis = {
             console.error('Error during get user by username:', error);
         }
     },
+    async createUser(username, email, password) {
+        try {
+            const response = await fetch(`${backEndUrl}users/`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password,
+                        email: email,
+                    })
+                });
+            if (response.ok) {
+                return response.json();
+            }
+        } catch (error) {
+            console.error('Error fetching order:', error);
+        }
+    },
+    async getUserShippingAddress(username) {
+        try {
+            const response = await fetch(`${backEndUrl}customerShippings/user/${username}`);
+            if (response.ok) {
+                return response.json();
+            }
+        } catch (error) {
+            console.error('Error fetching order:', error);
+        }
+    },
+    async createShippingAddress(username, receiverName, phoneNumber, city, detailAddress) {
+        try {
+            const response = await fetch(`${backEndUrl}customerShippings/`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        receiverName: receiverName,
+                        phoneNumber: phoneNumber,
+                        city: city,
+                        detailAddress: detailAddress,
+                    })
+                });
+            if (response.ok) {
+                return response.json();
+            }
+        } catch (error) {
+            console.error('Error fetching order:', error);
+        }
+
+    },
 }
