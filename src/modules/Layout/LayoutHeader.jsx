@@ -262,7 +262,7 @@ export default function LayoutHeader() {
                                     </div>
                                     <div className={'flex items-center mt-3'}>
                                         <img src={`${imageSrc}/to-do-list.png`} className={'w-4 h-4 mr-3'}/>
-                                        <a className={'text-black hover:text-red-600'} href={`account/${username}`}>
+                                        <a className={'text-black hover:text-red-600'} href={`http://localhost:3000/account/${username}`}>
                                             Đơn hàng của tôi
                                         </a>
                                     </div>

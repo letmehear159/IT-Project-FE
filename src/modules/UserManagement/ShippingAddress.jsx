@@ -16,28 +16,29 @@ export default function ShippingAddress() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [city, setCity] = useState('');
     const [detailAddress, setDetailAddress] = useState('');
-    const [shippingAddress, setShippingAddress] = useState(null);
+    const [shippingAddresses, setShippingAddresses] = useState(null);
 
     const username = localStorage.getItem('username');
-    const addUserShippingAddress = () => {
-        const ret = userApis.createShippingAddress(username, receiverName, phoneNumber, city, detailAddress);
+
+    const addUserShippingAddress = async () => {
+        const ret = await userApis.createShippingAddress(username, receiverName, phoneNumber, city, detailAddress);
+        setShippingAddresses([...shippingAddresses, ret]);
     }
 
     useEffect(() => {
         const fetchOrder = async () => {
             const data = await userApis.getUserShippingAddress(username);
-            setShippingAddress(data);
+            if (data !== null) {
+                setShippingAddresses(data);
+            }
         };
         fetchOrder();
-    }, [shippingAddress]);
+    }, []);
 
-
-    if (shippingAddress === null) {
-        return <div>Loading...</div>;
-    }
+    console.log(shippingAddresses);
 
     return (
-        <div className={'p-4 font-medium'}>
+        <div className={'p-4 font-medium '} >
             <div className={'flex justify-between pb-8 '}>
                 <div className={'text-left font-bold text-gray-600 text-2xl'}>Thông tin tài khoản</div>
                 <Dialog>
@@ -81,23 +82,34 @@ export default function ShippingAddress() {
                         </form>
                     </DialogContent>
                 </Dialog>
+            </div>
+            <div style={{ height:'490px'}} className={'overflow-auto'}>
+            {
+                shippingAddresses === undefined || shippingAddresses === null ? (
+                    <div className={'font-bold'}>Hiện tại bạn chưa thêm địa chỉ nào</div>
+                ) : (
+                    shippingAddresses.length !== 0 &&
+                    shippingAddresses.map((shippingAddress) => (
+                        <div className={' border-t-2 p-5'}>
+                            <div className={'flex mt-4 justify-between'}>
+                                <div>
+                                    <span>{shippingAddress.receiverName}</span>
+                                    <span className={'text-gray-500 ml-4'}>{shippingAddress.phoneNumber}</span>
+                                </div>
+                                <button className={' bg-white '} style={{border: '1px solid black'}}>Thiết lập mặc định
+                                </button>
+                            </div>
+                            <div className={'flex '}>
+                                <span
+                                    className={'text-gray-500 '}>{shippingAddress.detailAddress + ', ' + shippingAddress.city}</span>
+                            </div>
+                        </div>
 
-
+                    ))
+                )
+            }
             </div>
 
-            <div className={' border-t-2'}>
-                <div className={'flex mt-4 justify-between'}>
-                    <div>
-                        <span>Nguyễn Trường | </span>
-                        <span className={'text-gray-500 ml-1'}>0971487037</span>
-                    </div>
-                    <button className={' bg-white '} style={{border: '1px solid black'}}>Thiết lập mặc định</button>
-
-                </div>
-                <div className={'flex '}>
-                    <span className={'text-gray-500 '}>Phù lưu, Quảng Trị </span>
-                </div>
-            </div>
         </div>
     );
 };
